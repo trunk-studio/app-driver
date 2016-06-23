@@ -7,19 +7,14 @@ module.exports = (sequelize, DataTypes) => {
       // basic info
       title: DataTypes.STRING,
       contentType: DataTypes.STRING,
-      season: DataTypes.STRING,
-      EstimatedTime: DataTypes.STRING,
-      level: DataTypes.STRING,
-      length: DataTypes.STRING,
-      status: DataTypes.STRING,
-      status: DataTypes.STRING,
+      relatedUrl: DataTypes.STRING,
       description: DataTypes.STRING,
       details:{
         type: DataTypes.TEXT,
         get() {
           let value;
           let returnValue;
-          if (value === this.getDataValue('detail')) {
+          if (value === this.getDataValue('details')) {
             returnValue = JSON.parse(value);
           } else {
             returnValue = [];
@@ -28,9 +23,17 @@ module.exports = (sequelize, DataTypes) => {
         },
         set(value) {
           console.log('value', value);
-          return this.setDataValue('detail', JSON.stringify(value));
+          return this.setDataValue('details', JSON.stringify(value));
         },
       },
+
+      // extra info
+      status: DataTypes.STRING,
+      season: DataTypes.STRING,
+      EstimatedTime: DataTypes.FLOAT,
+      level: DataTypes.FLOAT,
+      length: DataTypes.FLOAT,
+      recommendation: DataTypes.STRING,
 
       // banner/cover photo and its source
       cover: DataTypes.STRING,
@@ -100,10 +103,10 @@ module.exports = (sequelize, DataTypes) => {
       website: DataTypes.STRING,
 
       // geo info
-      lat: DataTypes.STRING,
-      lon: DataTypes.STRING,
-      entryLat: DataTypes.STRING,
-      entryLon: DataTypes.STRING,
+      lat: DataTypes.DOUBLE,
+      lon: DataTypes.DOUBLE,
+      entryLat: DataTypes.DOUBLE,
+      entryLon: DataTypes.DOUBLE,
 
   }, {
       classMethods: {
