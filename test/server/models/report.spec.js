@@ -1,14 +1,15 @@
 describe.only('about report model operation.', () => {
   it('create report should success.', async (done) => {
     try {
-      const user = await models.User.create({
-        username: 'AAA',
-        email: 'dan82625@gmail.com',
-      });
+      // const user = await models.User.create({
+      //   username: 'AAA',
+      //   email: 'dan82625@gmail.com',
+      // });
+
       const report = await models.Report.create({
         audio: 'https://s3-ap-northeast-1.amazonaws.com/user_id/audio',
         video: 'https://s3-ap-northeast-1.amazonaws.com/user_id/video',
-        user_id: user.id,
+        email: 'test@gmail.com',
       });
 
       await models.Software.create({
