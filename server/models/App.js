@@ -1,27 +1,34 @@
 module.exports = (sequelize, DataTypes) => {
-    var App = sequelize.define('App', {
+  const App = sequelize.define('App', {
 
-        bundleId: DataTypes.STRING,
-        name: DataTypes.STRING,
-        description: DataTypes.STRING,
-        urlLandingPage: DataTypes.STRING,
-        urlAppStore: DataTypes.STRING,
-        urlPlayStore: DataTypes.STRING,
+    bundleId: {
+      type: DataTypes.STRING,
+      field: 'bundle_id',
+    },
+    name: DataTypes.STRING,
+    description: DataTypes.STRING,
+    urlLandingPage: {
+      type: DataTypes.STRING,
+      field: 'url_landing_page',
+    },
+    urlAppStore: {
+      type: DataTypes.STRING,
+      field: 'url_app_store',
+    },
+    urlPlayStore: {
+      type: DataTypes.STRING,
+      field: 'url_play_store',
+    },
 
-    }, {
-        classMethods: {
-            associate: (models) => {
-                App.hasOne(models.Content, {
-                    // hooks: true,
-                });
-                App.hasOne(models.News, {
-                    // hooks: true,
-                });
-            },
-            // underscored: true,
-            underscoredAll: true,
-        },
-    });
+  }, {
+    classMethods: {
+      associate: (models) => {
+        App.hasMany(models.Content);
+        App.hasMany(models.News);
+      },
+      underscored: true,
+    },
+  });
 
-    return App;
+  return App;
 };
