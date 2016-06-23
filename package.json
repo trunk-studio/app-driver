@@ -40,7 +40,7 @@
     "mysql": "^2.9.0",
     "node-fetch": "^1.5.3",
     "passport-local": "^1.0.0",
-    "sequelize": "^3.0.0",
+    "sequelize": "4.0.0-0",
     "sqlite3": "^3.0.8"
   },
   "devDependencies": {
