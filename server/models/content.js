@@ -139,6 +139,7 @@ module.exports = (sequelize, DataTypes) => {
     classMethods: {
       associate: (models) => {
         Content.belongsTo(models.App);
+        Content.hasOne(models.Allpay);
       },
     },
     underscored: true,

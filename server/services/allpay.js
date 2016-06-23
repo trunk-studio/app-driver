@@ -66,7 +66,7 @@ export default class Allpay {
     const data = {
       MerchantID: this.merchantID,
       MerchantTradeNo,
-      MerchantTradeDate: moment.format('YYYY/MM/DD HH:mm:ss'),
+      MerchantTradeDate: moment().format('YYYY/MM/DD HH:mm:ss'),
       PaymentType: 'aio',
       TotalAmount: totalAmount,
       TradeDesc: tradeDesc || 'none.',

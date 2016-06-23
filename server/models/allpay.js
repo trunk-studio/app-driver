@@ -41,7 +41,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     // allpay 應該要收到的付款金額
     ShouldTradeAmt: {
-      type: DataTypes.FLOAT
+      type: DataTypes.FLOAT,
       field: 'should_trade_amt',
     },
     // allpay 付款金額
@@ -95,7 +95,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     classMethods: {
       associate: (models) => {
-        Software.belongsTo(models.Report, { through: 'report_id' });
+        Allpay.belongsTo(models.Content, { through: 'content_id' });
       },
     },
     underscored: true,
