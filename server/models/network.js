@@ -8,9 +8,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
       field: 'trace_route',
       get() {
-        let value;
         let returnValue;
-        if (value = this.getDataValue('traceRoute')) {
+        const value = this.getDataValue('traceRoute');
+        if (value) {
           returnValue = JSON.parse(value);
         } else {
           returnValue = [];

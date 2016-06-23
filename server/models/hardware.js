@@ -13,9 +13,9 @@ module.exports = (sequelize, DataTypes) => {
     ram: {
       type: DataTypes.TEXT,
       get() {
-        let value;
         let returnValue;
-        if (value = this.getDataValue('ram')) {
+        const value = this.getDataValue('ram');
+        if (value) {
           returnValue = JSON.parse(value);
         } else {
           returnValue = [];
@@ -27,12 +27,13 @@ module.exports = (sequelize, DataTypes) => {
         return this.setDataValue('ram', JSON.stringify(value));
       },
     },
-    nic: {
+    networkInterface: {
       type: DataTypes.TEXT,
+      field: 'network_interface',
       get() {
-        let value;
         let returnValue;
-        if (value = this.getDataValue('nic')) {
+        const value = this.getDataValue('networkInterface');
+        if (value) {
           returnValue = JSON.parse(value);
         } else {
           returnValue = [];
@@ -41,7 +42,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       set(value) {
         console.log('value', value);
-        return this.setDataValue('nic', JSON.stringify(value));
+        return this.setDataValue('networkInterface', JSON.stringify(value));
       },
     },
   }, {

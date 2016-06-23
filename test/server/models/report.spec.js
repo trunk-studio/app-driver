@@ -39,7 +39,7 @@ describe.only('about report model operation.', () => {
             type: 'DDR3',
           },
         ],
-        nic: [
+        networkInterface: [
           {
             device: 'en0',
             ethernetAddress: 'e0:ac:cb:9b:75:d2',

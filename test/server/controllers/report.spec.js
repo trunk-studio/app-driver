@@ -6,6 +6,7 @@ describe("report", () => {
     it("success", async(done) => {
       try {
         let data = {
+          email: 'test@gmail.com',
           audio: 'https://s3-ap-northeast-1.amazonaws.com/user_id/audio',
           video: 'https://s3-ap-northeast-1.amazonaws.com/user_id/video',
           cpuBenchmark: '48255.59',
@@ -46,7 +47,7 @@ describe("report", () => {
               type: 'DDR3',
             },
           ],
-          network: [
+          networkInterface: [
             {
               device: 'en0',
               ethernetAddress: 'e0:ac:cb:9b:75:d2',
@@ -70,7 +71,7 @@ describe("report", () => {
             },
           ],
           software: {
-            '360': null,
+            china360: null,
             chrome: '51.0.2704.103',
             firefox: '44.0.2',
             flash: 'notFound',
