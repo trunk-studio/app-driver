@@ -1,4 +1,4 @@
-describe.only('about report model operation.', () => {
+describe('about report model operation.', () => {
   it('create report should success.', async (done) => {
     try {
       // const user = await models.User.create({
