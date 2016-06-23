@@ -6,6 +6,8 @@ describe.only('about report model operation.', () => {
         email: 'dan82625@gmail.com',
       });
       const report = await models.Report.create({
+        audio: 'https://s3-ap-northeast-1.amazonaws.com/user_id/audio',
+        video: 'https://s3-ap-northeast-1.amazonaws.com/user_id/video',
         user_id: user.id,
       });
 

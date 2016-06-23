@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
       get() {
         let value;
         let returnValue;
-        if (value === this.getDataValue('traceRoute')) {
+        if (value = this.getDataValue('traceRoute')) {
           returnValue = JSON.parse(value);
         } else {
           returnValue = [];

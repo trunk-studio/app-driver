@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       get() {
         let value;
         let returnValue;
-        if (value === this.getDataValue('ram')) {
+        if (value = this.getDataValue('ram')) {
           returnValue = JSON.parse(value);
         } else {
           returnValue = [];
@@ -32,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
       get() {
         let value;
         let returnValue;
-        if (value === this.getDataValue('nic')) {
+        if (value = this.getDataValue('nic')) {
           returnValue = JSON.parse(value);
         } else {
           returnValue = [];

@@ -6,8 +6,10 @@ describe("report", () => {
     it("success", async(done) => {
       try {
         let data = {
+          audio: 'https://s3-ap-northeast-1.amazonaws.com/user_id/audio',
+          video: 'https://s3-ap-northeast-1.amazonaws.com/user_id/video',
           cpuBenchmark: '48255.59',
-          networkInfo: {
+          network: [{
             ip: '192.168.168.114',
             ping: '47',
             upload: '1861818.18',
@@ -27,7 +29,7 @@ describe("report", () => {
               '192.168.168.114 : 108.170.233.83 (ttl=12 ms=49)',
               '192.168.168.114 : 172.217.25.99 (ttl=13 ms=46)',
             ],
-          },
+          }],
           cpu: 'Intel(R) Core(TM) i5-5250U CPU @ 1.60GHz',
           model: 'MacBookAir7,2',
           systemVersion: 'OS X El Capitan 10.11.3',
