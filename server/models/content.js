@@ -1,24 +1,21 @@
 module.exports = (sequelize, DataTypes) => {
   var Content = sequelize.define('Content', {
 
-      uuid: {
-          type: DataTypes.UUID
-      },
-
-      // this data for which app usage
-      target: DataTypes.STRING,
+      // app bundle id
+      bundleId: DataTypes.STRING,
 
       // basic info
       title: DataTypes.STRING,
-      type: DataTypes.STRING,
+      contentType: DataTypes.STRING,
       season: DataTypes.STRING,
       EstimatedTime: DataTypes.STRING,
       level: DataTypes.STRING,
       length: DataTypes.STRING,
       status: DataTypes.STRING,
       status: DataTypes.STRING,
-      detail:{
-        type: DataTypes.STRING,
+      description: DataTypes.STRING,
+      details:{
+        type: DataTypes.TEXT,
         get() {
           let value;
           let returnValue;
@@ -34,12 +31,19 @@ module.exports = (sequelize, DataTypes) => {
           return this.setDataValue('detail', JSON.stringify(value));
         },
       },
-      description:{
-        type: DataTypes.STRING,
+
+      // banner/cover photo and its source
+      cover: DataTypes.STRING,
+      coverSourceName: DataTypes.STRING,
+      coverSourceUrl: DataTypes.STRING,
+
+      // if this data contains extra photo
+      extraPhotos:{
+        type: DataTypes.TEXT,
         get() {
           let value;
           let returnValue;
-          if (value === this.getDataValue('description')) {
+          if (value === this.getDataValue('extraPhoto')) {
             returnValue = JSON.parse(value);
           } else {
             returnValue = [];
@@ -48,21 +52,45 @@ module.exports = (sequelize, DataTypes) => {
         },
         set(value) {
           console.log('value', value);
-          return this.setDataValue('description', JSON.stringify(value));
+          return this.setDataValue('extraPhoto', JSON.stringify(value));
+        },
+      },
+      extraPhotoSources:{
+        type: DataTypes.TEXT,
+        get() {
+          let value;
+          let returnValue;
+          if (value === this.getDataValue('extraPhotoSource')) {
+            returnValue = JSON.parse(value);
+          } else {
+            returnValue = [];
+          }
+          return returnValue;
+        },
+        set(value) {
+          console.log('value', value);
+          return this.setDataValue('extraPhotoSource', JSON.stringify(value));
+        },
+      },
+      extraPhotoSourceUrls:{
+        type: DataTypes.TEXT,
+        get() {
+          let value;
+          let returnValue;
+          if (value === this.getDataValue('extraPhotoSourceUrl')) {
+            returnValue = JSON.parse(value);
+          } else {
+            returnValue = [];
+          }
+          return returnValue;
+        },
+        set(value) {
+          console.log('value', value);
+          return this.setDataValue('extraPhotoSourceUrl', JSON.stringify(value));
         },
       },
 
-      // banner/cover photo and its source
-      cover: DataTypes.STRING,
-      coverSourceName: DataTypes.STRING,
-      coverSourceUrl: DataTypes.STRING,
-
-      // if this data contains extra photo
-      extraPhoto: DataTypes.STRING,
-      extraPhotoSource: DataTypes.STRING,
-      extraPhotoSourceUrl: DataTypes.STRING,
-
-      // location info
+      // place info
       placeFullAddress: DataTypes.STRING,
       placeDist: DataTypes.STRING,
       placeZone: DataTypes.STRING,
