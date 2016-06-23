@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  var Activity = sequelize.define('Activity', {
+  var News = sequelize.define('News', {
 
     uuid: {
       type: DataTypes.UUID
@@ -21,5 +21,5 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
 
-  return Activity;
+  return News;
 };

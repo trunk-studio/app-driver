@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  var Product = sequelize.define('Product', {
+  var Content = sequelize.define('Content', {
 
       uuid: {
           type: DataTypes.UUID
@@ -11,11 +11,46 @@ module.exports = (sequelize, DataTypes) => {
       // basic info
       title: DataTypes.STRING,
       type: DataTypes.STRING,
-      properSeason: DataTypes.STRING,
-      timeCost: DataTypes.STRING,
-      difficultyLevel: DataTypes.STRING,
-      description01: DataTypes.STRING,
-      description02: DataTypes.STRING,
+      season: DataTypes.STRING,
+      EstimatedTime: DataTypes.STRING,
+      level: DataTypes.STRING,
+      length: DataTypes.STRING,
+      status: DataTypes.STRING,
+      status: DataTypes.STRING,
+      detail:{
+        type: DataTypes.STRING,
+        get() {
+          let value;
+          let returnValue;
+          if (value === this.getDataValue('detail')) {
+            returnValue = JSON.parse(value);
+          } else {
+            returnValue = [];
+          }
+          return returnValue;
+        },
+        set(value) {
+          console.log('value', value);
+          return this.setDataValue('detail', JSON.stringify(value));
+        },
+      },
+      description:{
+        type: DataTypes.STRING,
+        get() {
+          let value;
+          let returnValue;
+          if (value === this.getDataValue('description')) {
+            returnValue = JSON.parse(value);
+          } else {
+            returnValue = [];
+          }
+          return returnValue;
+        },
+        set(value) {
+          console.log('value', value);
+          return this.setDataValue('description', JSON.stringify(value));
+        },
+      },
 
       // banner/cover photo and its source
       cover: DataTypes.STRING,
@@ -49,5 +84,5 @@ module.exports = (sequelize, DataTypes) => {
       underscored: true,
   });
 
-  return Product;
+  return Content;
 };
