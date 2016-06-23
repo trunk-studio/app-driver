@@ -33,7 +33,7 @@ describe("report", () => {
           }],
           cpu: 'Intel(R) Core(TM) i5-5250U CPU @ 1.60GHz',
           model: 'MacBookAir7,2',
-          systemVersion: 'OS X El Capitan 10.11.3',
+          modelVersion: 'OS X El Capitan 10.11.3',
           ram: [
             {
               size: '4 GB',
