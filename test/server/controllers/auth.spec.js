@@ -42,7 +42,7 @@ describe('auth', () => {
     });
   });
 
-  describe.only('local login spec', () => {
+  describe('local login spec', () => {
 
     before(async (done) => {
 
