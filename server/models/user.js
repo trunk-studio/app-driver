@@ -4,7 +4,6 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     classMethods: {
       associate: (models) => {
-        User.hasMany(models.Report, { foreignKey: 'user_id' });
       },
     },
     underscored: true,
