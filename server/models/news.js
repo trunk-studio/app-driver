@@ -2,7 +2,7 @@ module.exports = (sequelize, DataTypes) => {
   var Activity = sequelize.define('Activity', {
 
     uuid: {
-      type: Sequelize.UUID
+      type: DataTypes.UUID
     },
 
     // for app
