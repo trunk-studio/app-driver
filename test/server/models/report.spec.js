@@ -1,29 +1,29 @@
 describe.only('about report model operation.', () => {
-  it('create User should success.', async (done) => {
+  it('create report should success.', async (done) => {
     try {
       const user = await models.User.create({
-        "username": 'AAA',
-        "email": 'dan82625@gmail.com'
+        username: 'AAA',
+        email: 'dan82625@gmail.com',
       });
       const report = await models.Report.create({
-        "user_id": user.id,
+        user_id: user.id,
       });
 
-      const software = await models.Software.create({
-        "china360": '1.0',
-        "chrome": '1.0',
-        "firefox": '1.0',
-        "flash": '1.0',
-        "ie": '1.0',
-        "safari": '1.0',
-        "report_id": report.id
+      await models.Software.create({
+        china360: '1.0',
+        chrome: '1.0',
+        firefox: '1.0',
+        flash: '1.0',
+        ie: '1.0',
+        safari: '1.0',
+        report_id: report.id,
       });
 
-      const hardware = await models.Hardware.create({
-        "cpu": 'Intel(R) Core(TM) i5-5250U CPU @ 1.60GHz',
-        "cpuBenchmark": '48255.59',
-        "model": 'MacBookAir7,2',
-        "modelVersion": 'OS X El Capitan 10.11.3',
+      await models.Hardware.create({
+        cpu: 'Intel(R) Core(TM) i5-5250U CPU @ 1.60GHz',
+        cpuBenchmark: '48255.59',
+        model: 'MacBookAir7,2',
+        modelVersion: 'OS X El Capitan 10.11.3',
         ram: [
           {
             size: '4 GB',
@@ -60,10 +60,10 @@ describe.only('about report model operation.', () => {
             enable: false,
           },
         ],
-        "report_id": report.id,
+        report_id: report.id,
       });
 
-      const network = await models.Network.create({
+      await models.Network.create({
         ip: '192.168.168.114',
         ping: '47',
         upload: '1861818.18',
@@ -83,7 +83,19 @@ describe.only('about report model operation.', () => {
           '192.168.168.114 : 108.170.233.83 (ttl=12 ms=49)',
           '192.168.168.114 : 172.217.25.99 (ttl=13 ms=46)',
         ],
-        "report_id": report.id,
+        report_id: report.id,
+      });
+
+      await models.Network.create({
+        ip: '127.0.0.1',
+        ping: '10',
+        upload: '1861818.18',
+        download: '81269.84',
+        traceRoute: [
+          '127.0.0.1 : 211.72.239.254 (ttl=1 ms=6)',
+          '127.0.0.1 : 168.95.229.166 (ttl=2 ms=4)',
+        ],
+        report_id: report.id,
       });
 
       const testFindReport = await models.Report.findOne({
@@ -96,6 +108,7 @@ describe.only('about report model operation.', () => {
           models.Network,
         ],
       });
+      console.log(JSON.stringify(testFindReport, null, 2));
       done();
     } catch (e) {
       console.log(e);

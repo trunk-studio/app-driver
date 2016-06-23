@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
         Report.belongsTo(models.User, { through: 'user_id' });
         Report.hasOne(models.Software);
         Report.hasOne(models.Hardware);
-        Report.hasOne(models.Network);
+        Report.hasMany(models.Network);
       },
     },
     underscored: true,
