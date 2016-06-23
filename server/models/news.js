@@ -1,25 +1,23 @@
 module.exports = (sequelize, DataTypes) => {
-  var News = sequelize.define('News', {
+    var News = sequelize.define('News', {
 
-    uuid: {
-      type: DataTypes.UUID
-    },
+        rss: DataTypes.STRING,
+        title: DataTypes.STRING,
+        description: DataTypes.STRING,
+        time: DataTypes.STRING,
+        url: DataTypes.STRING,
 
-    // for app
-    target: DataTypes.STRING,
+    }, {
+        classMethods: {
+            associate: (models) => {
+                News.belongsTo(models.App, {
+                    // hooks: true,
+                });
+            }
+        },
+        // underscored: true,
+        underscoredAll: true,
+    });
 
-    rss: DataTypes.STRING,
-    title: DataTypes.STRING,
-    description: DataTypes.STRING,
-    time: DataTypes.STRING,
-    url: DataTypes.STRING,
-
-  }, {
-    classMethods: {
-      associate: (models) => {
-      }
-    }
-  });
-
-  return News;
+    return News;
 };

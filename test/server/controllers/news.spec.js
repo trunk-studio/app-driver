@@ -1,19 +1,27 @@
-describe("coupon", () => {
+describe("News", () => {
 
-    describe("use", done => {
+    describe("API Test", done => {
+
+        let testData1;
+        let testData2;
+
         before(async done => {
             try {
 
-                done();
+              testData1 = {
+
+              }
+
+              done();
             } catch (e) {
-                done(e);
+              done(e);
             }
         })
 
         it('should get app`s news from server', async done => {
             try {
                 let target = 'agritour';
-                let result = await request.get("/rest/activities/" + target);
+                let result = await request.get("/rest/news/" + target);
 
                 // data json
                 // {
