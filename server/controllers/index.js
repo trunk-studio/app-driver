@@ -68,11 +68,16 @@ export default class Routes {
             url: 'http://xxx.xxx.xxx',
             video: 'http://xxx.xxx.xxx.mp4',
           }],
-          testServer: [
-            '88.84.191.230',
-            '100.49.121.44',
-            '127.0.0.1',
-          ],
+          testServer: [{
+            name: '測試站1',
+            host: '88.84.191.230',
+          }, {
+            name: '測試站2',
+            host: '100.49.121.44',
+          }, {
+            name: '測試站3',
+            host: '127.0.0.1',
+          }],
           report: 'http://xxx.xxx.xxx/report',
           debug: true,
         };
