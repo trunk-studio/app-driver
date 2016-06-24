@@ -5,7 +5,9 @@ module.exports = (sequelize, DataTypes) => {
     title: DataTypes.STRING,
     description: DataTypes.STRING,
     type: {
-      type: DataTypes.STRING,
+      type: DataTypes.ENUM,
+      defaultValue: 'content',
+      values: ['content', 'news', 'product'],
     },
     relatedUrl: {
       type: DataTypes.STRING,
