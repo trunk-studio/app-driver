@@ -2,6 +2,7 @@ module.exports = (sequelize, DataTypes) => {
   const Attribute = sequelize.define('Attribute', {
 
     // extra info
+    price: DataTypes.FLOAT,
     status: DataTypes.STRING,
     season: DataTypes.STRING,
     level: DataTypes.FLOAT,
