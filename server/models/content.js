@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     classMethods: {
       associate: (models) => {
-        Content.belongsTo(models.App, { through: 'app_id' });
+        // Content.belongsTo(models.App, { through: 'app_id' });
         Content.hasMany(models.Attribute);
         Content.hasMany(models.Contact);
         Content.hasMany(models.Photo);
