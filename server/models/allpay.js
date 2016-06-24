@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
       field: 'payment_date',
     },
     // allpay 交易日期
-    TradeDate:{
+    TradeDate: {
       type: DataTypes.DATE,
       field: 'trade_date',
     },
@@ -80,22 +80,23 @@ module.exports = (sequelize, DataTypes) => {
     },
     Barcode3: {
       type: DataTypes.STRING,
-      field: 'barcode3'
+      field: 'barcode3',
     },
     // allpay 金額產生使用
     CheckMacValue: {
       type: DataTypes.STRING,
-      field: 'check_mac_value'
+      field: 'check_mac_value',
     },
     // 訂單產生的時候的交易時間
     MerchantTradeDate: {
       type: DataTypes.DATE,
-      field: 'merchant_trade_date'
+      field: 'merchant_trade_date',
     },
   }, {
     classMethods: {
       associate: (models) => {
         Allpay.belongsTo(models.Content, { through: 'content_id' });
+        Allpay.hasOne(models.Order);
       },
     },
     underscored: true,
