@@ -56,15 +56,19 @@ export default class Routes {
     });
 
     publicRoute.post('/report', reportController.report);
-    publicRoute.post('/config', async (ctx) => {
+    publicRoute.get('/config', async (ctx) => {
       try {
         const data = {
-          ad: {
+          ad: [{
             type: 'img',
             url: 'http://xxx.xxx.xxx',
             image: 'http://xxx.xxx.xxx.jpg',
-          },
-          testIp: [
+          }, {
+            type: 'video',
+            url: 'http://xxx.xxx.xxx',
+            video: 'http://xxx.xxx.xxx.mp4',
+          }],
+          testServer: [
             '88.84.191.230',
             '100.49.121.44',
             '127.0.0.1',
@@ -78,7 +82,7 @@ export default class Routes {
         ctx.body = { error: e };
       }
     });
-    
+
     app.use(publicRoute.middleware())
 
     // app.use(function(ctx, next) {
