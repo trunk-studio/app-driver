@@ -8,7 +8,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.FLOAT,
       field: 'should_trade_amt',
     },
-    account: DataTypes.STRING,
+    paidAccount: {
+      type: DataTypes.STRING,
+      field: 'paid_account',
+    },
   }, {
     classMethods: {
       associate: (models) => {
