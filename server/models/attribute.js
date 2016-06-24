@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     level: DataTypes.FLOAT,
     length: DataTypes.FLOAT,
     sightseeing: DataTypes.STRING,
-    rssSource: {
+    rss: {
       type: DataTypes.STRING,
       field: 'rss_source',
     },

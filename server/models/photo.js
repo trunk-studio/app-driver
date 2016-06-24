@@ -2,15 +2,15 @@ module.exports = (sequelize, DataTypes) => {
   const Photo = sequelize.define('Photo', {
 
     // banner/photo photo and its source
-    photoSrc: {
+    src: {
       type: DataTypes.STRING,
       field: 'photo_src',
     },
-    photoSourceName: {
+    sourceName: {
       type: DataTypes.STRING,
       field: 'photo_source_name',
     },
-    photoSourceUrl: {
+    sourceUrl: {
       type: DataTypes.STRING,
       field: 'photo_source_url',
     },

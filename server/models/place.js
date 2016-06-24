@@ -14,15 +14,15 @@ module.exports = (sequelize, DataTypes) => {
     },
 
     // place info
-    placeFullAddress: {
+    fullAddress: {
       type: DataTypes.STRING,
       field: 'place_full_address',
     },
-    placeDist: {
+    dist: {
       type: DataTypes.STRING,
       field: 'place_dist',
     },
-    placeZone: {
+    zone: {
       type: DataTypes.STRING,
       field: 'place_zone',
     },
