@@ -24,10 +24,9 @@ module.exports = (sequelize, DataTypes) => {
     classMethods: {
       associate: (models) => {
         App.hasMany(models.Content);
-        App.hasMany(models.News);
       },
-      underscored: true,
     },
+    underscored: true,
   });
 
   return App;
