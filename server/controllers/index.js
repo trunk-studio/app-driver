@@ -56,7 +56,29 @@ export default class Routes {
     });
 
     publicRoute.post('/report', reportController.report);
-
+    publicRoute.post('/config', async (ctx) => {
+      try {
+        const data = {
+          ad: {
+            type: 'img',
+            url: 'http://xxx.xxx.xxx',
+            image: 'http://xxx.xxx.xxx.jpg',
+          },
+          testIp: [
+            '88.84.191.230',
+            '100.49.121.44',
+            '127.0.0.1',
+          ],
+          report: 'http://xxx.xxx.xxx/report',
+          debug: true,
+        };
+        ctx.body = data;
+      }
+      catch (e) {
+        ctx.body = { error: e };
+      }
+    });
+    
     app.use(publicRoute.middleware())
 
     // app.use(function(ctx, next) {
