@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
         Content.hasMany(models.Contact);
         Content.hasMany(models.Photo);
         Content.hasMany(models.Place);
-        Content.hasOne(models.Allpay);
+        Content.hasOne(models.Order);
       },
     },
     underscored: true,

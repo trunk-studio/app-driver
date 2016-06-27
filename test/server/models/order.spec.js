@@ -10,12 +10,19 @@ describe.only('about report model operation.', () => {
         payment_type: 'ATM_TAISHIN',
         trade_amt: 22000,
       });
+      const contents = await models.Content.create({
+        title: 'AAA',
+        description: 'VVV',
+        type: 'content',
+        app_id: null,
+      });
       const order = await models.Order.create({
         paymentDate: '2012-03-16 04:03:12',
         price: 22000,
         paidAccount: '9103522175887271',
         allpay_id: allpay.id,
       });
+      await order.addContent(contents.id);
       console.log(JSON.stringify(order, null, 2));
       done();
     } catch (e) {

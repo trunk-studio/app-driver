@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
     classMethods: {
       associate: (models) => {
         Order.belongsTo(models.Allpay, { through: 'allpay_id' });
+        Order.belongsToMany(models.Content, { through: 'OrderContent' });
       },
     },
     underscored: true,
