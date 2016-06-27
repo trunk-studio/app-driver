@@ -95,7 +95,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     classMethods: {
       associate: (models) => {
-        Allpay.hasOne(models.Order);
+        Allpay.belongsTo(models.Order, { through: 'order_id' });
       },
     },
     underscored: true,
