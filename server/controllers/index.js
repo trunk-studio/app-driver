@@ -57,6 +57,37 @@ export default class Routes {
     });
 
     publicRoute.post('/report', reportController.report);
+    publicRoute.get('/config', async (ctx) => {
+      try {
+        const data = {
+          ad: [{
+            type: 'img',
+            url: 'http://xxx.xxx.xxx',
+            image: 'http://xxx.xxx.xxx.jpg',
+          }, {
+            type: 'video',
+            url: 'http://xxx.xxx.xxx',
+            video: 'http://xxx.xxx.xxx.mp4',
+          }],
+          testServer: [{
+            name: '測試站1',
+            host: '88.84.191.230',
+          }, {
+            name: '測試站2',
+            host: '100.49.121.44',
+          }, {
+            name: '測試站3',
+            host: '127.0.0.1',
+          }],
+          report: 'http://xxx.xxx.xxx/report',
+          debug: true,
+        };
+        ctx.body = data;
+      }
+      catch (e) {
+        ctx.body = { error: e };
+      }
+    });
 
     app.use(publicRoute.middleware())
 
