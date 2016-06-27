@@ -73,8 +73,10 @@ export default class Routes {
     publicRoute.post('/report', reportController.report);
 
     // app controller
-    publicRoute.get('/rest/app/:id/news', appController.news);
-    publicRoute.get('/rest/app/:id/content', appController.content);
+    publicRoute.get('/rest/app/:id/news', appController.getNews);
+    publicRoute.get('/rest/app/:id/content', appController.getContent);
+    publicRoute.get('/rest/app/', appController.getAppList);
+    publicRoute.post('/rest/app/', appController.createApp);
 
     app.use(publicRoute.middleware())
 
