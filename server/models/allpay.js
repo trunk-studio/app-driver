@@ -5,23 +5,23 @@ module.exports = (sequelize, DataTypes) => {
     // 訂單編號，提供給 allpay 使用
     // 訂單成立後更新的編號，由 allpay 提供
     TradeNo: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(20),
       unique: true,
       field: 'trade_no',
     },
     MerchantTradeNo: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(20),
       unique: true,
       field: 'merchant_trade_no',
     },
     // allpay 回傳資訊
     RtnCode: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.INTEGER(2),
       field: 'rtn_code',
     },
     // allpay 回傳資訊
     RtnMsg: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(20),
       field: 'rtn_msg',
     },
     // allpay 付款時間
@@ -36,7 +36,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     // allpay 採用金流方式
     PaymentType: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(20),
       field: 'payment_type',
     },
     // allpay 應該要收到的付款金額
@@ -51,35 +51,35 @@ module.exports = (sequelize, DataTypes) => {
     },
     // allpay bankcode
     BankCode: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(3),
       field: 'bank_code',
     },
     // 要繳費的帳號
     vAccount: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(16),
       field: 'v_account',
     },
     // 過期日期
     ExpireDate: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(20),
       field: 'expire_date',
     },
     // 支付交易編號
     PaymentNo: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(14),
       field: 'payment_no',
     },
     // allpay 交易，用於 ibon, barcode 付帳流程上
     Barcode1: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(20),
       field: 'barcode1',
     },
     Barcode2: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(20),
       field: 'barcode2',
     },
     Barcode3: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(20),
       field: 'barcode3',
     },
     // allpay 金額產生使用
