@@ -77,6 +77,7 @@ export default class Routes {
             host: '172.217.25.99',
           }],
           report: 'http://xxx.xxx.xxx/report',
+          uploadApi: 'http://xxx.xxx.xxx/',
           debug: true,
         };
         ctx.body = data;
