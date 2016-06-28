@@ -19,11 +19,15 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       field: 'url_play_store',
     },
+    s3Bucket: {
+      type: DataTypes.STRING,
+      field: 's3_bucket',
+    },
 
   }, {
     classMethods: {
       associate: (models) => {
-        App.hasMany(models.Content);
+        // App.hasMany(models.Content);
       },
     },
     underscored: true,
