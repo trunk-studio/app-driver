@@ -71,13 +71,10 @@ export default class Routes {
           }],
           testServer: [{
             name: '測試站1',
-            host: '88.84.191.230',
+            host: '192.168.168.114',
           }, {
             name: '測試站2',
-            host: '100.49.121.44',
-          }, {
-            name: '測試站3',
-            host: '127.0.0.1',
+            host: '172.217.25.99',
           }],
           report: 'http://xxx.xxx.xxx/report',
           debug: true,
