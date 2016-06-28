@@ -22,6 +22,7 @@ module.exports = (sequelize, DataTypes) => {
         Content.hasMany(models.Contact);
         Content.hasMany(models.Photo);
         Content.hasMany(models.Place);
+        Content.hasMany(models.Order);
       },
     },
     underscored: true,

@@ -3,6 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import fetch from 'node-fetch';
 import reportController from './report';
+import allpayController from './allpay';
 
 var aws = require('aws-sdk');
 var crypto = require("crypto");
