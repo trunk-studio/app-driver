@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     // allpay 回傳資訊
     RtnMsg: {
-      type: DataTypes.STRING(20),
+      type: DataTypes.STRING(200),
       field: 'rtn_msg',
     },
     // allpay 付款時間

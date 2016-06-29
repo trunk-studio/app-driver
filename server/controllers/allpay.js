@@ -23,5 +23,25 @@ exports.create = async (ctx) => {
     ctx.render('allpay/allpay', allpayData);
   } catch (e) {
     console.log(e);
+    ctx.render('error');
+  }
+};
+
+exports.paymentinfo = async (ctx) => {
+  try {
+    const data = ctx.request.body;
+    console.log("paymentinfo => ", data);
+    const paymentinfo = await services.allpay.paymentinfo(data);
+    const order = await models.Order.findById(paymentinfo.order_id);
+    if (order.price === data.TradeAmt) {
+      order.bankCode = data.BankCode;
+      order.paidAccount = data.vAccount;
+      await order.save();
+    }
+    // allpay規定成功回傳 '1|OK'
+    ctx.body = '1|OK';
+  } catch (e) {
+    console.log(e);
+    ctx.body = '0|ErrorMessage';
   }
 };

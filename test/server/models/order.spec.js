@@ -1,4 +1,4 @@
-describe.only('about order model operation.', () => {
+describe('about order model operation.', () => {
   it('create report should success.', async (done) => {
     try {
       const content = await models.Content.create({

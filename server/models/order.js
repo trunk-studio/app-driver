@@ -8,8 +8,12 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.FLOAT,
       field: 'price',
     },
+    bankCode: {
+      type: DataTypes.STRING(3),
+      field: 'bank_code',
+    },
     paidAccount: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(16),
       field: 'paid_account',
     },
   }, {
