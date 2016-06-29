@@ -18,7 +18,7 @@ exports.create = async (ctx) => {
     };
     allpayData = await services.allpay.getAllpayConfig(allpayData);
     // 測試用的 url
-    allpayData.AioCheckOut = 'https://payment-stage.allpay.com.tw/Cashier/AioCheckOut';
+    allpayData.AioCheckOut = await services.allpay.getPostUrl();
     console.log("allpayData => ", allpayData);
     ctx.render('allpay/allpay', allpayData);
   } catch (e) {
