@@ -59,6 +59,7 @@ export default class Routes {
     publicRoute.get('/allpay', (ctx) => ctx.render('allpay/order'));
     publicRoute.post('/allpay', allpayController.create);
     publicRoute.post('/allpay/paymentinfo', allpayController.paymentinfo);
+    publicRoute.post('/allpay/paid', allpayController.paid);
 
     publicRoute.post('/report', reportController.report);
     publicRoute.get('/config', async (ctx) => {

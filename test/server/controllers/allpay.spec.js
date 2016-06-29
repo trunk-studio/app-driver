@@ -1,15 +1,17 @@
 
 describe('allpay', () => {
 
-  describe('call allpay api', done => {
-
-    before(async(done) => {
+  describe.only('call allpay api', done => {
+    let order;
+    let allpay;
+    beforeEach(async(done) => {
       try {
-        const order = await models.Order.create({
+        order = await models.Order.create({
           price: 22000,
         });
-        await models.Allpay.create({
+        allpay = await models.Allpay.create({
           MerchantTradeNo: 'sdkfsldfjkl23s',
+          TradeAmt: 22000,
           order_id: order.id,
         });
         done();
@@ -19,7 +21,26 @@ describe('allpay', () => {
       }
     });
 
-    it.only('get paymentinfo client use ATM success', async(done) => {
+    afterEach(async(done) => {
+      try {
+        await models.Order.destroy({
+          where: {
+            id: order.id,
+          },
+        });
+        await models.Allpay.destroy({
+          where: {
+            id: allpay.id,
+          },
+        });
+        done();
+      } catch (e) {
+        console.log(e);
+        done(e);
+      }
+    });
+
+    it('get paymentinfo client use ATM success', async(done) => {
       try {
         const data = {
           MerchantID: '123456789',
@@ -36,6 +57,30 @@ describe('allpay', () => {
           ExpireDate: '2013/12/16',
         };
         const result = await request.post('/allpay/paymentinfo').send(data);
+        result.status.should.be.equal(200);
+        done();
+      } catch (e) {
+        done(e);
+      }
+    });
+
+    it('client paid', async(done) => {
+      try {
+        const data = {
+          MerchantID: '123456789',
+          MerchantTradeNo: 'sdkfsldfjkl23s',
+          RtnCode: '1',
+          RtnMsg: 'paid',
+          TradeNo: '201203151740582564',
+          TradeAmt: 22000,
+          PaymentDate: '2012/03/16 12:03:12',
+          PaymentType: 'ATM_TAISHIN',
+          PaymentTypeChargeFee: 25,
+          TradeDate: '2012/03/15 17:40:58',
+          SimulatePaid: 0,
+          CheckMacValue: 'FD79C15859F58D0BC24CDE67F59CC81C',
+        };
+        const result = await request.post('/allpay/paid').send(data);
         result.status.should.be.equal(200);
         done();
       } catch (e) {
