@@ -4,7 +4,7 @@
   "description": "",
   "main": "server/index.js",
   "scripts": {
-    "start": "node server/",
+    "start": "node_modules/.bin/nodemon --harmony -e js,pug server/",
     "test": "NODE_ENV=test ./node_modules/.bin/mocha --opts ./test/server/mocha.opts ./test/server/**/*.spec.js",
     "test-unit": "NODE_ENV=test ./node_modules/.bin/mocha --opts ./test/unit/mocha.opts ./test/unit/**/*.spec.js",
     "start-prod": "NODE_ENV=production node server/",
@@ -60,6 +60,7 @@
     "eslint-plugin-jsx-a11y": "^1.5.3",
     "eslint-plugin-react": "^5.2.2",
     "mocha": "^2.2.5",
+    "nodemon": "^1.9.2",
     "should": "^8.0.0",
     "sinon": "^1.15.4",
     "supertest": "^1.1.0",

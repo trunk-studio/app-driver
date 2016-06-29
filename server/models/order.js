@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     price: {
       type: DataTypes.FLOAT,
-      field: 'should_trade_amt',
+      field: 'price',
     },
     paidAccount: {
       type: DataTypes.STRING,
