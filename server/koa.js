@@ -87,7 +87,7 @@ app.use(convert(mount('/public/assets/images', staticCache(path.join(__dirname, 
 app.use(convert(mount('/public/assets/fineuploader', staticCache(path.join(__dirname, '../public/assets/fineuploader/'), {maxAge: 30 * 24 * 60 * 60}))));
 global.services = new Services();
 var controllers = new Controllers(app, passport);
-
+var services =global.services;
 
 app.use(async function (ctx, next) {
   try {
