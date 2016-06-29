@@ -1,0 +1,28 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    script(src='//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js')
+  body
+    block body
+    div
+      center
+        form(action='/allpay' method='post')
+          | title:
+          br
+          input(type='text', name='title')
+          br
+          | itemArray:
+          br
+          input(type='text', name='itemArray[0]')
+          input(type='text', name='itemArray[1]')
+          input(type='text', name='itemArray[2]')
+          br
+          | amount:
+          br
+          input(type='text', name='totalAmount')
+          br
+          input(type='submit' value="Submit")
+    div
+      center Trunk Studio &copy; 2016
