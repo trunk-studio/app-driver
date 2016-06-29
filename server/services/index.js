@@ -1,6 +1,7 @@
 import AllpayService from './allpay';
-export default class Services {
+import S3Service from './s3';
 
+export default class Services {
   constructor() {
     // this.main = new MainService();
     this.allpay = new AllpayService({
@@ -14,6 +15,8 @@ export default class Services {
       PaymentInfoURL: '/allpay/paymentinfo',
       allpayModel: models.Allpay,
     });
+    this.s3 = new S3Service({
+      debug: true,
+    });
   }
-
 }
