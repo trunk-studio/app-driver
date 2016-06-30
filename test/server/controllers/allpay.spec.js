@@ -1,7 +1,7 @@
 
 describe('allpay', () => {
 
-  describe.only('call allpay api', done => {
+  describe('call allpay api', done => {
     let order;
     let allpay;
     beforeEach(async(done) => {
