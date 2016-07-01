@@ -3,9 +3,8 @@ import fs from 'fs';
 import path from 'path';
 import fetch from 'node-fetch';
 import reportController from './report';
+import s3Controller from './s3';
 import allpayController from './allpay';
-
-var aws = require('aws-sdk');
 var crypto = require("crypto");
 
 export default class Routes {
@@ -23,13 +22,13 @@ export default class Routes {
     var app = this.app;
     var publicRoute = new Router();
 
-    publicRoute.get('/', function(ctx){
-      ctx.redirect('/s3/upload');
-    });
-
-    publicRoute.get('/s3/upload', function(ctx){
-      ctx.render('s3/upload', {accessKey: appConfig.accessKey});
-    });
+    // publicRoute.get('/', function(ctx){
+    //   ctx.redirect('/s3/upload');
+    // });
+    //
+    // publicRoute.get('/s3/upload', function(ctx){
+    //   ctx.render('s3/upload', {accessKey: appConfig.accessKey});
+    // });
 
     publicRoute.get('/lambda/echo', async (ctx) => {
       let res = await fetch(appConfig.lambdaApiEndpoint, { method: 'POST', body: '{"operation":"echo", "payload":"Hello World"}' });
@@ -56,6 +55,7 @@ export default class Routes {
       }
     });
 
+    publicRoute.post('/s3/upload', s3Controller.upload);
     publicRoute.post('/report', reportController.report);
     publicRoute.get('/config', async (ctx) => {
       try {
