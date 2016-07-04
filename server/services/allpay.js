@@ -14,6 +14,7 @@ export default class Allpay {
       ReturnURL,
       ClientBackURL,
       PaymentInfoURL,
+      domain,
     }) {
     this.merchantID = merchantID;
     this.hashKey = hashKey;
@@ -26,6 +27,7 @@ export default class Allpay {
     this.ClientBackURL = ClientBackURL;
     this.PaymentInfoURL = PaymentInfoURL;
     this.Allpay = allpayModel;
+    this.domain = domain;
   }
 
   genCheckMacValue(data) {
@@ -61,7 +63,6 @@ export default class Allpay {
     totalAmount,
     paymentMethod,
     itemArray,
-    domain,
   }) {
     const data = {
       MerchantID: this.merchantID,
@@ -71,10 +72,10 @@ export default class Allpay {
       TotalAmount: totalAmount,
       TradeDesc: tradeDesc || 'none.',
       ItemName: itemArray ? itemArray.join('#') : '',
-      ReturnURL: this.resolve(domain, this.ReturnURL, true),
+      ReturnURL: this.resolve(this.domain, this.ReturnURL, true),
       ChoosePayment: paymentMethod || 'ALL',
-      ClientBackURL: `${this.resolve(domain, this.ClientBackURL, true)}?t=${MerchantTradeNo}`,
-      PaymentInfoURL: this.resolve(domain, this.PaymentInfoURL, true),
+      ClientBackURL: `${this.resolve(this.domain, this.ClientBackURL, true)}?t=${MerchantTradeNo}`,
+      PaymentInfoURL: this.resolve(this.domain, this.PaymentInfoURL, true),
     };
     await this.Allpay.create({
       ...relatedKeyValue,
@@ -145,6 +146,9 @@ export default class Allpay {
       });
       if (!findAllpayInfo) {
         throw new Error(`${callBackData.MerchantTradeNo} 嚴重錯誤!!付款後找不到訂單!!`);
+      }
+      if (findAllpayInfo.TradeAmt !== callBackData.TradeAmt) {
+        throw new Error(`${callBackData.MerchantTradeNo} 嚴重錯誤!!金額錯誤!!`);
       }
       return findAllpayInfo;
     } catch (e) {

@@ -1,0 +1,28 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    script(src='//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js')
+    link(rel='stylesheet', href='//cdnjs.cloudflare.com/ajax/libs/file-uploader/5.10.0/all.fine-uploader/fine-uploader-new.min.css')
+    script(src='//cdnjs.cloudflare.com/ajax/libs/file-uploader/5.10.0/s3.jquery.fine-uploader/s3.jquery.fine-uploader.min.js')
+  body
+    block body
+      div.container 交易進行中，請勿關閉視窗....
+          form#form1(name='form1', method='post',action= AioCheckOut)
+            input(type='hidden', name='MerchantID' value= MerchantID)
+            input(type='hidden', name='MerchantTradeNo' value= MerchantTradeNo)
+            input(type='hidden', name='MerchantTradeDate' value= MerchantTradeDate)
+            input(type='hidden', name='PaymentType' value= PaymentType)
+            input(type='hidden', name='TotalAmount' value= TotalAmount)
+            input(type='hidden', name='TradeDesc' value= TradeDesc)
+            input(type='hidden', name='ItemName' value= ItemName)
+            input(type='hidden', name='ReturnURL' value= ReturnURL)
+            input(type='hidden', name='ChoosePayment' value= ChoosePayment)
+            input(type='hidden', name='ClientBackURL' value= ClientBackURL)
+            input(type='hidden', name='CheckMacValue' value= CheckMacValue)
+            input(type='hidden', name='PaymentInfoURL' value= PaymentInfoURL)
+            //- a.btn.btn-primary(onClick='$("form[name=\'form1\']").submit()') 查詢
+    block js
+      script.
+        $( document ).ready( $("form[name='form1']").submit() );

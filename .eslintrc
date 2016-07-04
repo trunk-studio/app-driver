@@ -15,5 +15,7 @@
     "before": false,
     "beforeEach": false,
     "models": false,
+    "services": false,
+    "request": false,
   }
 }

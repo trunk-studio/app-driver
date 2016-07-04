@@ -55,7 +55,15 @@ export default class Routes {
       }
     });
 
+
+    publicRoute.get('/allpay', (ctx) => ctx.render('allpay/order'));
+    publicRoute.post('/allpay', allpayController.create);
+    publicRoute.post('/allpay/paymentinfo', allpayController.paymentinfo);
+    publicRoute.post('/allpay/paid', allpayController.paid);
+
+
     publicRoute.post('/s3/upload', s3Controller.upload);
+
     publicRoute.post('/report', reportController.report);
     publicRoute.get('/config', async (ctx) => {
       try {
@@ -74,12 +82,10 @@ export default class Routes {
             host: '192.168.168.114',
           }, {
             name: '測試站2',
-            host: '100.49.121.44',
-          }, {
-            name: '測試站3',
-            host: '172.217.25.99',
+            host: '139.162.20.180',
           }],
           report: 'http://xxx.xxx.xxx/report',
+          uploadApi: 'http://xxx.xxx.xxx/',
           debug: true,
         };
         ctx.body = data;
